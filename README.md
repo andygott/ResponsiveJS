@@ -1,8 +1,12 @@
 # ResponsiveJS
 
-### A simple way to attach javascript event listeners to the window resize event for specific min-width and max-width values
+### A simple way to attach JavaScript event listeners to the window resize event for specific min-width and max-width values
 
 Free to use for any project – licensed under the MIT license or the GPL license Version 2.
+
+ResponsiveJS is a tiny (1.1kb minified) script that makes it really simple to call JavaScript functions at specific min-width and max-width values, using the same syntax as media queries. Your functions are bound to the window resize event, and are also called as you bind them (on page load, for example) – this functionality is optional.
+
+This is handy for things such as conditionally loading content (mobile first, etc), and restructuring markup (for small screen/ large screen navigation, etc). 
 
 ## Usage
 
@@ -11,9 +15,9 @@ ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)',
 	function(dimensions) {console.log(dimensions); });
 ```
 
-## `bind(query, callback [, fire_now])`
+## bind(query, callback [, fire_now])
 
-The `bind()` method has takes three paramters:
+The `bind()` method has takes three parameters:
 
 ### `query` string
 min-width and/or max-width values using the same syntax as media queries. 
@@ -40,3 +44,15 @@ By default this callback function is also called as it is bound, if the current 
 If true (default) the callback function is called as it is bound, if the browser dimensions meet the criteria in `query`. Set to false if you only want the function to be called when the browser is resized.
 
 This default behaviour provides an easy way to call your function on page load as well as on browser resize.
+
+## Without dimensional contraints
+
+Because RespondJS uses the neat (and well documented) little `setTimeout()` trick for the window resize event, you can use it to cover all window resize events, by passing in an empty string as the `query` parameter:
+
+```js
+	ResponsiveJS.bind('', function() {do this on window resize}, false);
+```
+
+## Credits
+
+Inspired by Scott Jehl's excellent Respond.js, from which the min- and max-width regexes are taken.

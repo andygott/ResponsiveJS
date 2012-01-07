@@ -1,6 +1,6 @@
 # ResponsiveJS
 
-#### A simple way to attach javascript event listeners to the window resize event for specific min-width and max-width values
+### A simple way to attach javascript event listeners to the window resize event for specific min-width and max-width values
 
 Free to use for any project – licensed under the MIT license or the GPL license Version 2.
 
@@ -15,7 +15,7 @@ ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)',
 
 The `bind()` method has takes three paramters:
 
-#### `query` string
+### `query` string
 min-width and/or max-width values using the same syntax as media queries. 
 
 Examples:
@@ -24,7 +24,7 @@ Examples:
 `(max-width: 1024px)`
 `(min-width: 500px)`
 
-#### `callback` function
+### `callback` function
 A callback function to call when the browser window is resized and the new window dimensions meet the criteria set in `query`. The function is passed an object containing the new window dimensions:
 
 ```js
@@ -36,7 +36,7 @@ A callback function to call when the browser window is resized and the new windo
 
 By default this callback function is also called as it is bound, if the current browser window dimensions meet the criteria. If, for example, you call the `bind()` method on page load, your callback will fire on page load. To switch this behaviour off see the `fire_now` param below.
 
-#### `fire_now` boolean
+### `fire_now` boolean
 If true (default) the callback function is called as it is bound, if the browser dimensions meet the criteria in `query`. Set to false if you only want the function to be called when the browser is resized.
 
 This default behaviour provides an easy way to call your function on page load as well as on browser resize.

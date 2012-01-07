@@ -1,7 +1,12 @@
 
-
-
-
+/*
+*	A simple way to add javascript listeners to the window 
+*	resize event for specific min- and max-width values.
+*
+*	Usage:
+*	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
+*		function(dimensions) {console.log(dimensions); });
+*/
 
 (function(win) {
 	
@@ -10,6 +15,7 @@
 		listeners: [],
 		
 		bind: function(query, callback, fire_now) {
+			fire_now = (typeof fire_now === 'undefined') ? true : fire_now;
 			var minw = 
 				(query.match(/\(min\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) && parseFloat(RegExp.$1)) || 0;
 			var maxw = 
@@ -59,13 +65,5 @@
 	else if (win.attachEvent) {
 		win.attachEvent("onresize", resizeFunc);
 	}
-	
-	
-	
-	
-	
+		
 })(this);
-
-
-
-ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', function(dimensions) {console.log(dimensions); }, true);

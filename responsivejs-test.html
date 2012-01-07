@@ -6,4 +6,8 @@
 <body>
 
 <script src="responsivejs.js"></script>
+<script>
+	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
+		function(dimensions) {console.log(dimensions); });
+</script>
 </body>

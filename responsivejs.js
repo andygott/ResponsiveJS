@@ -21,13 +21,14 @@
 			var maxw = 
 				(query.match(/\(max\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) 
 					&& parseFloat(RegExp.$1)) || 1000000;
-			this.listeners.push({
+			var listener = {
 				minw: minw,
 				maxw: maxw,
 				callback: callback
-			});
+			};
+			this.listeners.push(listener);
 			if (fire_now) {
-				return this._fireListener(this._getDims(), callback);
+				return this._fireListener(this._getDims(), listener);
 			}
 		},
 		

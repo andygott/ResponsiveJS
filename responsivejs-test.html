@@ -8,6 +8,19 @@
 <script src="responsivejs.js"></script>
 <script>
 	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
-		function(dimensions) {console.log(dimensions); });
+		function(dimensions) {
+			console.log(dimensions.w + ' x ' + dimensions.h + 
+			' fired: (min-width: 320px) and (max-width: 800px)'); 
+		});
+	ResponsiveJS.bind('(max-width: 1200px)', 
+		function(dimensions) {
+			console.log(dimensions.w + ' x ' + dimensions.h + 
+			' fired: (max-width: 1200px)'); 
+		});
+	ResponsiveJS.bind('(min-width: 500px)', 
+		function(dimensions) {
+			console.log(dimensions.w + ' x ' + dimensions.h + 
+			' fired: (min-width: 500px)'); 
+		});
 </script>
 </body>

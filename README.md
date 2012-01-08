@@ -4,7 +4,7 @@
 
 Free to use for any project – licensed under the MIT license or the GPL license Version 2.
 
-ResponsiveJS is a tiny (1.1kb minified) script that makes it really simple to call JavaScript functions at specific min-width and max-width values, using the same syntax as media queries. Your functions are bound to the window resize event, and are also called as you bind them (on page load, for example) – this functionality is optional.
+ResponsiveJS is a tiny (1.4kb minified) script that makes it really simple to call JavaScript functions at specific min-width and max-width values, using the same syntax as media queries. Your functions are bound to the window resize event, and are also called as you bind them (on page load, for example) – this functionality is optional.
 
 This is handy for things such as conditionally loading content (for a mobile-first approach, for example), and restructuring markup (for small screen/ large screen navigation, etc). 
 

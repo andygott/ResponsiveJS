@@ -10,6 +10,8 @@ This is handy for things such as conditionally loading content (for a mobile-fir
 
 ResponsiveJS is written in native JavaScript, so you can use it with your framework of choice.
 
+Written by Andy Gott ([Twitter](https://twitter.com/#!/RSWorks)) at [Really Simple](http://reallysimpleworks.com/).
+
 ## Usage
 
 A very simple use case looks like this:
@@ -69,7 +71,7 @@ If `true` (default) the callback function is called as it is bound, if the brows
 
 If this is `true`, the callback will only be fired once and then the listener will be detached.
 
-See the below example for conditionally loading content for a use case.
+For an example use case, see the below example for conditionally loading content.
 
 ## The fire() Method
 

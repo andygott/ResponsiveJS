@@ -67,7 +67,7 @@ $('#click-me').click(function(e) {
 });
 ```
 
-Using a namespace prevents the default behaviour of automatically firing on window resize, and provides a way segment and group your window width dependent callback functions.
+Using a namespace prevents the default behaviour of automatically firing on window resize, and provides a way to segment and group your window width dependent callback functions.
 
 ## Without dimensional constraints
 

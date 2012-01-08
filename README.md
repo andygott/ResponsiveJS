@@ -8,6 +8,8 @@ ResponsiveJS is a tiny (1.4kb minified) script that makes it really simple to ca
 
 This is handy for things such as conditionally loading content (for a mobile-first approach, for example), and restructuring markup (for small screen/ large screen navigation, etc). 
 
+ResponsiveJS is written in native JavaScript, so you can use it with your framework of choice.
+
 ## Usage
 
 ```js

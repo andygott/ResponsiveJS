@@ -12,9 +12,16 @@
 	
 	win.ResponsiveJS = {
 	
-		listeners: [],
+		listeners: {},
+		_default_ns: 'rjs-default-window-resize',
 		
-		bind: function(query, callback, fire_now) {
+		bind: function(ns, query, callback, fire_now) {
+			if (typeof query === 'function') {
+				fire_now = callback;
+				callback = query;
+				query = ns;
+				ns = this._default_ns;
+			}
 			fire_now = (typeof fire_now === 'undefined') ? true : fire_now;
 			var minw = 
 				(query.match(/\(min\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) && parseFloat(RegExp.$1)) || 0;
@@ -26,9 +33,12 @@
 				maxw: maxw,
 				callback: callback
 			};
-			this.listeners.push(listener);
+			if (typeof this.listeners[ns] === 'undefined') {
+				this.listeners[ns] = [];
+			}
+			this.listeners[ns].push(listener);
 			if (fire_now) {
-				return this._fireListener(this._getDims(), listener);
+				return this._fireListener(this._getDims(), listener, ns);
 			}
 		},
 		
@@ -41,16 +51,17 @@
 			return {w : e[a + 'Width'], h: e[a + 'Height']}
 		},
 		
-		fire: function() {
-			var dims = this._getDims();
-			for (var i = 0, len = this.listeners.length; i < len; i ++) {
-				this._fireListener(dims, this.listeners[i]);
+		fire: function(ns) {
+			var ns = ns || this._default_ns,
+				dims = this._getDims();
+			for (var i = 0, len = this.listeners[ns].length; i < len; i ++) {
+				this._fireListener(dims, this.listeners[ns][i], ns);
 			}
 		},
 		
-		_fireListener: function(dims, listener) {
+		_fireListener: function(dims, listener, ns) {
 			if (dims.w >= listener.minw && dims.w <= listener.maxw) {
-				return listener.callback(dims);
+				return listener.callback(dims, ns);
 			}
 		}
 		

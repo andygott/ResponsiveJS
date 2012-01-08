@@ -4,7 +4,7 @@
 	<title>ResponsiveJS Test</title>
 </head>
 <body>
-
+	<p><a id="click-me" href="#">Click me</a></p>
 <script src="responsivejs.js"></script>
 <script>
 	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
@@ -22,5 +22,16 @@
 			console.log(dimensions.w + ' x ' + dimensions.h + 
 			' fired: (min-width: 500px)'); 
 		});
+		
+	//	Using namespaces to attach callbacks to a different event
+	ResponsiveJS.bind('my-namespace', '(min-width: 500px)', 
+		function(dimensions, namespace) {
+			console.log(dimensions.w + ' x ' + dimensions.h + 
+			' fired: (min-width: 500px) in namespace: ' + namespace); 
+		});
+	var el = document.getElementById('click-me');
+	el.addEventListener('click', function() {
+		ResponsiveJS.fire('my-namespace');
+	});
 </script>
 </body>

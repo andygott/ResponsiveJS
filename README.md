@@ -49,7 +49,24 @@ This default behaviour provides an easy way to call your function on page load a
 
 The `fire()` method fires the callbacks that you have assigned to any min-width and/or max-width constraints that match the current window dimensions. Useful for attaching to events other than window resize or for triggering arbitrarily from within your code.
 
-## Without dimensional contraints
+## Using Namespaces
+
+Namespaces can be used to separate your callback functions. For example, you might want to set a callback to fire when the user clicks on a link, rather than on the window resize event. Here’s how you’d do that (if you’re using jQuery):
+
+```js
+ResponsiveJS.bind('my-namespace', '(min-width: 500px)', 
+	function(dimensions, namespace) {
+		console.log('The browser window is at least 500px wide and you did something to fire callback functions in the "my-namespace" namespace'); 
+	});
+$('#click-me').click(function(e) {
+	e.preventDefault();
+	ResponsiveJS.fire('my-namespace');
+});
+```
+
+Using a namespace prevents the default behaviour of automatically firing on window resize, and provides a way segment and group your window width dependent callback functions.
+
+## Without dimensional constraints
 
 Because RespondJS uses the neat (and well documented) little `setTimeout()` trick for the window resize event, you can use it to cover all window resize events, by passing in an empty string as the `query` parameter:
 

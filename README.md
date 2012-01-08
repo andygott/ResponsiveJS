@@ -55,12 +55,14 @@ Defaults:
 }
 ```
 
-*`fire_now` boolean (optional)* default: true
+**`fire_now` boolean (optional)** default: true
+
 If true (default) the callback function is called as it is bound, if the browser dimensions meet the criteria in `query`. Set to false if you only want the function to be called when the browser is resized.
 
 This default behaviour provides an easy way to call your function on page load as well as on browser resize.
 
-*'fire_once' boolean (optional)* default: false
+**`fire_once` boolean (optional)** default: false
+
 If this is true, the callback will only be fired once and then the listener will be detached. 
 
 ## The fire() Method

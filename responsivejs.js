@@ -70,7 +70,7 @@
 	var timer;
 	resizeFunc = function() {
 		if (timer) {clearTimeout(timer); }
-		timer = setTimeout(function() {ResponsiveJS.fire(); }, 100);
+		timer = setTimeout(function() {ResponsiveJS.fire(); }, 200);
 	};
 	if (win.addEventListener) {
 		win.addEventListener("resize", resizeFunc, false);

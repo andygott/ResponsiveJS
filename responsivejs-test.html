@@ -5,7 +5,10 @@
 </head>
 <body>
 	<p><a id="click-me" href="#">Click me</a></p>
+	<div id="sidebar"></div>
 <script src="responsivejs.js"></script>
+<!-- Using jQuery here for brevity - feel free to use any JS framework you like -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
 	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
 		function(dimensions) {
@@ -33,5 +36,10 @@
 	el.addEventListener('click', function() {
 		ResponsiveJS.fire('my-namespace');
 	});
+	
+	//	Load content conditionally
+	ResponsiveJS.bind('(min-width: 600px)', function() {
+		$('#sidebar').load('additional-content.html');
+	}, {fire_once: true});
 </script>
 </body>

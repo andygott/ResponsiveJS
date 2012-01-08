@@ -59,7 +59,8 @@ Namespaces can be used to separate your callback functions. For example, you mig
 ResponsiveJS.bind('my-namespace', '(min-width: 500px)', 
 	function(dimensions, namespace) {
 		console.log('The browser window is at least 500px wide and you did something to fire callback functions in the "my-namespace" namespace'); 
-	});
+	},
+	false); // false prevents the function from firing as it is bound
 $('#click-me').click(function(e) {
 	e.preventDefault();
 	ResponsiveJS.fire('my-namespace');

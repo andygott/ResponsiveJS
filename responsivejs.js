@@ -27,7 +27,7 @@
 				callback: callback
 			});
 			if (fire_now) {
-				return this._fire(this._getDims(), callback);
+				return this._fireListener(this._getDims(), callback);
 			}
 		},
 		
@@ -40,10 +40,16 @@
 			return {w : e[a + 'Width'], h: e[a + 'Height']}
 		},
 		
-		_fire: function(dims, listener) {
-			if (dims.w >= listener.minw && 
-				dims.w <= listener.maxw) {
-					return listener.callback(dims);
+		fire: function() {
+			var dims = this._getDims();
+			for (var i = 0, len = this.listeners.length; i < len; i ++) {
+				this._fireListener(dims, this.listeners[i]);
+			}
+		},
+		
+		_fireListener: function(dims, listener) {
+			if (dims.w >= listener.minw && dims.w <= listener.maxw) {
+				return listener.callback(dims);
 			}
 		}
 		
@@ -52,12 +58,7 @@
 	var timer;
 	resizeFunc = function() {
 		if (timer) {clearTimeout(timer); }
-		timer = setTimeout(function() {
-			var dims = ResponsiveJS._getDims();
-			for (var i = 0, len = win.ResponsiveJS.listeners.length; i < len; i ++) {
-				ResponsiveJS._fire(dims, win.ResponsiveJS.listeners[i]);
-			}
-		}, 100);
+		timer = setTimeout(function() {ResponsiveJS.fire(); }, 100);
 	};
 	if (win.addEventListener) {
 		win.addEventListener("resize", resizeFunc, false);

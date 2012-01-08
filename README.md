@@ -61,11 +61,11 @@ Defaults:
 }
 ```
 
-**`fire_now` boolean (optional)** default: `true`
+`fire_now` boolean (optional) default: `true`
 
 If `true` (default) the callback function is called as it is bound, if the browser dimensions meet the criteria in `query`. Set to `false` to prevent this behaviour.
 
-**`fire_once` boolean (optional)** default: `false`
+`fire_once` boolean (optional) default: `false`
 
 If this is `true`, the callback will only be fired once and then the listener will be detached.
 
@@ -105,7 +105,7 @@ These examples use jQuery for brevity but ResponsiveJS works with any framework,
 
 ### Conditionally loading content
 
-The following will load content from `/my-additional-content.html` into the element with `id="sidebar"` only if the window width is 500px or more. This will happen on page load (if the window width meets the criteria), or on browser resize (again, if width criteria are met). The `fire_once: true` setting means that, no matter when the content is loaded, it is only loaded once.
+The following will load content from `/my-additional-content.html` into the element with `id="sidebar"` only if the window width is 600px or more. This will happen on page load (if the window width meets the criteria), or on browser resize (if the new width meets the criteria). The `fire_once: true` setting means that, no matter when the content is loaded, it is only loaded once.
 
 ```js
 

@@ -17,7 +17,9 @@ ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)',
 	function(dimensions) {console.log(dimensions); });
 ```
 
-## bind(query, callback [, fire_now = true])
+## The bind() Method
+
+`bind(query, callback [, fire_now = true])`
 
 The `bind()` method takes three parameters:
 
@@ -47,9 +49,13 @@ If true (default) the callback function is called as it is bound, if the browser
 
 This default behaviour provides an easy way to call your function on page load as well as on browser resize.
 
-## fire()
+## The fire() Method
+
+`fire([namespace])`
 
 The `fire()` method fires the callbacks that you have assigned to any min-width and/or max-width constraints that match the current window dimensions. Useful for attaching to events other than window resize or for triggering arbitrarily from within your code.
+
+See below for usage of the optional `namespace` parameter.
 
 ## Using Namespaces
 

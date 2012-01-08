@@ -53,6 +53,8 @@ The `fire()` method fires the callbacks that you have assigned to any min-width 
 
 ## Using Namespaces
 
+`bind(namespace, query, callback[, fire_now])`
+
 Namespaces can be used to separate your callback functions. For example, you might want to set a callback to fire when the user clicks on a link, rather than on the window resize event. Here’s how you’d do that (if you’re using jQuery):
 
 ```js

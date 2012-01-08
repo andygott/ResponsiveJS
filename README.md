@@ -1,6 +1,6 @@
 # ResponsiveJS
 
-### A simple way to attach JavaScript listeners to browser window min-width and max-width contraints, using the same syntax as media queries.
+### A simple way to attach JavaScript listeners to browser window width ranges, using the same syntax as media queries.
 
 Free to use for any project – licensed under the MIT license or the GPL license Version 2.
 
@@ -69,7 +69,7 @@ If `true` (default) the callback function is called as it is bound, if the brows
 
 If this is `true`, the callback will only be fired once and then the listener will be detached.
 
-See the example for conitionally loading content below for a use case.
+See the below example for conditionally loading content for a use case.
 
 ## The fire() Method
 

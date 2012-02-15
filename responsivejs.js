@@ -7,8 +7,8 @@
 *	ResponsiveJS.bind('(min-width: 320px) and (max-width: 800px)', 
 *		function(dimensions) {console.log(dimensions); });
 */
+;(function(win) {
 
-(function(win) {
 	
 	win.ResponsiveJS = {
 	
@@ -27,21 +27,23 @@
 				ns = this._default_ns;
 			}
 			var opts = {};
-			for (var key in this._default_options) {
+			var key;
+			for (key in this._default_options) {
 				if (this._default_options.hasOwnProperty(key)) {
 					opts[key] = this._default_options[key];
 				}
 			}
-			for (var key in options) {
+			for (key in options) {
 				if (options.hasOwnProperty(key)) {
 					opts[key] = options[key];
 				}
 			}
 			var minw = 
-				(query.match(/\(min\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) && parseFloat(RegExp.$1)) || 0;
+				(query.match(/\(min\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) && 
+					parseFloat(RegExp.$1)) || 0;
 			var maxw = 
-				(query.match(/\(max\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) 
-					&& parseFloat(RegExp.$1)) || 1000000;
+				(query.match(/\(max\-width:[\s]*([\s]*[0-9]+)px[\s]*\)/) && 
+					parseFloat(RegExp.$1)) || 1000000;
 			var listener = {
 				minw: minw,
 				maxw: maxw,
@@ -63,12 +65,15 @@
 				a = 'client';
 				e = document.documentElement || document.body;
 			}
-			return {w : e[a + 'Width'], h: e[a + 'Height']}
+			return {w : e[a + 'Width'], h: e[a + 'Height']};
 		},
 		
 		fire: function(ns) {
-			var ns = ns || this._default_ns,
-				dims = this._getDims();
+			ns = ns || this._default_ns;
+			var dims = this._getDims();
+			if (!this.listeners[ns]) {
+				return false;
+			}
 			for (var i = 0, len = this.listeners[ns].length; i < len; i ++) {
 				this._fireListener(dims, this.listeners[ns][i], ns, i);
 			}
@@ -86,15 +91,15 @@
 	};
 
 	var timer;
-	resizeFunc = function() {
+	win.RjsResizeFunc = function() {
 		if (timer) {clearTimeout(timer); }
-		timer = setTimeout(function() {ResponsiveJS.fire(); }, 200);
+		timer = setTimeout(function() {win.ResponsiveJS.fire(); }, 200);
 	};
 	if (win.addEventListener) {
-		win.addEventListener("resize", resizeFunc, false);
+		win.addEventListener("resize", win.RjsResizeFunc, false);
 	}
 	else if (win.attachEvent) {
-		win.attachEvent("onresize", resizeFunc);
+		win.attachEvent("onresize", win.RjsResizeFunc);
 	}
 		
 })(this);

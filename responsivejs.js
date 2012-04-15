@@ -74,7 +74,7 @@
 			if (!this.listeners[ns]) {
 				return false;
 			}
-			for (var i = 0, len = this.listeners[ns].length; i < len; i ++) {
+			for (var i = 0; i < this.listeners[ns].length; i ++) {
 				this._fireListener(dims, this.listeners[ns][i], ns, i);
 			}
 		},
